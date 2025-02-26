@@ -2,7 +2,6 @@
 x = [1, 2, 3, 4, 5]
 y = [2, 4, 5, 4, 5]
 
-
 # 2. Calcular as médias de x e y
 media_x = sum(x) / len(x)
 media_y = sum(y) / len(y)
