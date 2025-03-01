@@ -1,4 +1,4 @@
-# Importando as bibliotecas necessárias
+import pandas as pd
 from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.preprocessing import StandardScaler
@@ -7,37 +7,41 @@ from sklearn.metrics import accuracy_score, confusion_matrix, precision_score, r
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Carregando o dataset Wine
-data = load_wine()
-X = data.data
-y = data.target
+# Carregar o conjunto de dados do vinho
+wine = load_wine()
 
-# Dividindo os dados em treinamento e teste
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+# Criar um DataFrame do Pandas
+df = pd.DataFrame(wine.data, columns=wine.feature_names)
+df['target'] = wine.target  # Adicionando a coluna de classe
 
-# Normalizando as features
+# Exibir as primeiras linhas do DataFrame
+print(df.head())
+
+# Análise básica
+print("\nInformações do DataFrame:")
+print(df.info())
+
+print("\nEstatísticas descritivas:")
+print(df.describe())
+
+# Divisão dos dados em treino e teste
+X_train, X_test, y_train, y_test = train_test_split(df.drop(columns=['target']), df['target'], test_size=0.2, random_state=42)
+
+# Normalização dos dados
 scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-X_test = scaler.transform(X_test)
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
 
-# Implementando o classificador KNN
-k = 5  # Exemplo de valor para k
-knn = KNeighborsClassifier(n_neighbors=k)
-knn.fit(X_train, y_train)
-y_pred = knn.predict(X_test)
+# Treinar o modelo KNN
+knn = KNeighborsClassifier(n_neighbors=5)
+knn.fit(X_train_scaled, y_train)
 
-# Calculando as métricas
-accuracy = accuracy_score(y_test, y_pred)
-conf_matrix = confusion_matrix(y_test, y_pred)
-precision = precision_score(y_test, y_pred, average='weighted')
-recall = recall_score(y_test, y_pred, average='weighted')
-f1 = f1_score(y_test, y_pred, average='weighted')
+# Fazer previsões
+y_pred = knn.predict(X_test_scaled)
 
-print("Acurácia:", accuracy)
-print("Matriz de Confusão:\n", conf_matrix)
-print("Precisão:", precision)
-print("Recall:", recall)
-print("F1-Score:", f1)
-
-# (Opcional) Plotando a Curva ROC e calculando a AUC para uma classe específica
-# Para problemas multiclasse, considere a abordagem "one vs. rest".
+# Avaliação do modelo
+print("\nAcurácia:", accuracy_score(y_test, y_pred))
+print("Matriz de Confusão:\n", confusion_matrix(y_test, y_pred))
+print("Precisão:", precision_score(y_test, y_pred, average='weighted'))
+print("Recall:", recall_score(y_test, y_pred, average='weighted'))
+print("F1-score:", f1_score(y_test, y_pred, average='weighted'))
