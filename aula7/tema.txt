@@ -1,9 +1,5 @@
 texto = """
-A tecnologia tem evoluído rapidamente nas últimas décadas, impactando todas as áreas da sociedade. 
-Entre as inovações mais significativas está a inteligência artificial, que permite que máquinas aprendam, tomem decisões e até interajam com humanos de forma natural.
-Com algoritmos cada vez mais avançados, a IA está presente em assistentes virtuais, recomendações de filmes, diagnósticos médicos e carros autônomos.
-Apesar dos benefícios, também existem desafios éticos e preocupações com o uso indevido dessas tecnologias.
-O futuro da inteligência artificial dependerá de como as pessoas irão equilibrar inovação com responsabilidade e valores humanos.
+a tecnologia tem evoluído rapidamente nos últimos anos trazendo inovações que impactam diretamente a sociedade a inteligência artificial é um dos principais avanços dessa era tecnológica ela permite que máquinas aprendam tomem decisões e executem tarefas que antes exigiam intervenção humana sistemas de recomendação assistentes virtuais e carros autônomos são apenas alguns exemplos do uso da inteligência artificial na vida cotidiana empresas utilizam a tecnologia para analisar grandes volumes de dados identificar padrões e melhorar a tomada de decisões além disso a inteligência artificial é aplicada na medicina ajudando no diagnóstico precoce de doenças e no desenvolvimento de tratamentos personalizados apesar dos benefícios a tecnologia também levanta questões éticas como a privacidade dos dados e o impacto no mercado de trabalho é fundamental que o desenvolvimento da inteligência artificial seja feito de forma responsável garantindo que os avanços sejam utilizados para o bem-estar da humanidade em resumo a combinação entre tecnologia e inteligência artificial representa uma revolução com grande potencial para transformar o mundo
 """
 
 with open("tema.txt", "w", encoding="utf-8") as arquivo:
