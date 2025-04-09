@@ -1,0 +1,10 @@
+texto = """
+A tecnologia tem evoluído rapidamente nas últimas décadas, impactando todas as áreas da sociedade. 
+Entre as inovações mais significativas está a inteligência artificial, que permite que máquinas aprendam, tomem decisões e até interajam com humanos de forma natural.
+Com algoritmos cada vez mais avançados, a IA está presente em assistentes virtuais, recomendações de filmes, diagnósticos médicos e carros autônomos.
+Apesar dos benefícios, também existem desafios éticos e preocupações com o uso indevido dessas tecnologias.
+O futuro da inteligência artificial dependerá de como as pessoas irão equilibrar inovação com responsabilidade e valores humanos.
+"""
+
+with open("tema.txt", "w", encoding="utf-8") as arquivo:
+    arquivo.write(texto)
