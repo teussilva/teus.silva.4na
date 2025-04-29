@@ -1,9 +1,27 @@
 import streamlit as st
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import nltk
 
-st.title("Meu Primeiro Aplicativo Streamlit")
+sia = SentimentIntensityAnalyzer()
 
-st.write("Olá! Este é um aplicativo simples criado com Streamlit.")
+st.title('Detecção de Sentimento')
+st.subheader('Digite o texto abaixo:')
+user_text = st.text_area('Seu texto aqui', height=150, placeholder='Digite aqui uma frase para análise de sentimento...')
+botao_analise_sentimento = st.button('Analisar Sentimento')
 
-nome = st.text_input("Digite seu nome:")
-if nome:
-    st.write(f"Olá, {nome}!")
+if botao_analise_sentimento:
+    if len(user_text) > 0:
+        scores = sia.polarity_scores(user_text)
+        compound_score = scores['compound']
+
+        st.subheader('Resultado da Análise:')
+        st.write(f'Pontuação (Compound): {compound_score:.2f}')
+
+        if compound_score >= 0.05:
+            st.write('Sentimento: Positivo')
+        elif compound_score <= -0.05:
+            st.write('Sentimento: Negativo')
+        else:
+            st.write('Sentimento: Neutro')
+    else:
+        st.warning('Por favor, digite algum texto para analisar.')
