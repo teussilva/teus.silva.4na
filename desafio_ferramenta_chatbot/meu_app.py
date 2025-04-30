@@ -12,7 +12,7 @@ botao_analise_sentimento = st.button('Analisar Sentimento')
 if botao_analise_sentimento:
     if len(user_text) > 0:
         scores = sia.polarity_scores(user_text)
-        compound_score = scores['compound']s
+        compound_score = scores['compound']
         st.subheader('Resultado da Análise:')
         st.write(f'Pontuação (Composto): {compound_score:.2f}%')
         if compound_score >= 0.05:
