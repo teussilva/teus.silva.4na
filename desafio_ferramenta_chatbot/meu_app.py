@@ -1,6 +1,7 @@
 import streamlit as st
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import nltk
+nltk.download('vader_lexicon')
 
 sia = SentimentIntensityAnalyzer()
 
@@ -24,4 +25,4 @@ if botao_analise_sentimento:
     else:
         st.warning('Por favor, digite algum texto para analisar.')
 else:
-     st.warning('Nenhum texto inserido, Por favor preencha o campo obrigatório!!!')
+    st.warning('Nenhum texto inserido, Por favor preencha o campo obrigatorio!!!')
